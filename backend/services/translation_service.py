@@ -51,6 +51,15 @@ class TranslationService:
 
     def _create_translation_prompt(self, text: str, target_language: str) -> str:
         """Create a prompt for Gemini to translate the summary"""
+        # Special handling for Indian languages
+        language_instructions = ""
+        if target_language.lower() in ["tamil", "தமிழ்"]:
+            language_instructions = "\n- Use proper Tamil script (தமிழ்)\n- Maintain cultural context appropriate for Tamil speakers\n- Use formal Tamil register suitable for educational content"
+        elif target_language.lower() in ["telugu", "తెలుగు"]:
+            language_instructions = "\n- Use proper Telugu script (తెలుగు)\n- Maintain cultural context appropriate for Telugu speakers\n- Use formal Telugu register suitable for educational content"
+        elif target_language.lower() in ["hindi", "हिन्दी"]:
+            language_instructions = "\n- Use proper Devanagari script\n- Maintain cultural context appropriate for Hindi speakers"
+
         return f"""
 Please translate the following bullet points to {target_language}.
 Maintain the same structure and meaning, but make it natural and fluent in the target language.
@@ -63,7 +72,7 @@ Requirements:
 - Maintain the same number of points
 - Preserve the meaning and context
 - Use natural, fluent {target_language}
-- Don't add explanations, just provide the translation
+- Don't add explanations, just provide the translation{language_instructions}
 
 Translated text:
 """
@@ -111,6 +120,8 @@ Translated text:
             "zh": "Chinese (Simplified)",
             "ar": "Arabic",
             "hi": "Hindi",
+            "ta": "Tamil (தமிழ்)",
+            "te": "Telugu (తెలుగు)",
             "tr": "Turkish",
             "pl": "Polish",
             "nl": "Dutch",
