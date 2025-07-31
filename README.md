@@ -57,7 +57,14 @@ Transform YouTube videos into concise, interactive summaries with advanced AI fe
 - **Smooth animations** with Framer Motion
 - **Intuitive interface** with clear navigation
 
-## 🚀 Quick Start
+## 🚀 Quick Deploy (One-Click)
+
+### Deploy to Production
+[![Deploy Frontend to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/PAVAwuywhe3u7/you-learn&project-name=you-learn-frontend&root-directory=frontend)
+
+[![Deploy Backend to Railway](https://railway.app/button.svg)](https://railway.app/template/you-learn-backend?referralCode=you-learn)
+
+### Local Development
 
 ### Prerequisites
 - **Python 3.8+**
@@ -201,7 +208,34 @@ CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
 
 ## 🚀 Deployment
 
-### Using Docker (Recommended)
+### Production Deployment (Recommended)
+
+#### Option 1: Vercel + Railway
+1. **Frontend (Vercel)**:
+   - Connect your GitHub repo to Vercel
+   - Set root directory to `frontend`
+   - Add environment variable: `VITE_API_URL=your-backend-url`
+   - Deploy automatically
+
+2. **Backend (Railway)**:
+   - Connect your GitHub repo to Railway
+   - Add environment variable: `GEMINI_API_KEY=your-api-key`
+   - Deploy automatically with Dockerfile
+
+#### Option 2: Netlify + Heroku
+1. **Frontend (Netlify)**:
+   - Connect GitHub repo
+   - Set build directory to `frontend`
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+
+2. **Backend (Heroku)**:
+   - Create new Heroku app
+   - Connect GitHub repo
+   - Set buildpack to Python
+   - Add environment variables
+
+### Using Docker (Local)
 ```bash
 # Build and run with Docker Compose
 docker-compose up --build
