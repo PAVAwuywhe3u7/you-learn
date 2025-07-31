@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+youtube-transcript-api
+google-generativeai
+reportlab
+python-docx
+python-multipart
+requests
+pydantic
+python-dotenv
+Pillow
